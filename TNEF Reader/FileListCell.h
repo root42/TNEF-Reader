@@ -10,4 +10,8 @@
 
 @interface FileListCell : UITableViewCell
 
+@property (nonatomic, retain) IBOutlet UILabel *title;
+@property (nonatomic, retain) IBOutlet UILabel *subtitle;
+@property (nonatomic, retain) IBOutlet UIImageView *image;
+
 @end

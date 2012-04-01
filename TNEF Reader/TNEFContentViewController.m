@@ -8,9 +8,17 @@
 
 #import "TNEFContentViewController.h"
 
+#import "AppDelegate.h"
 #import "DetailViewController.h"
+#import "FileListCell.h"
 
-@interface TNEFContentViewController () {
+
+@interface TNEFContentViewController () 
+@property (nonatomic, retain) NSArray *fileNames;
+@end
+
+@interface TNEFContentViewController () 
+{
     NSMutableArray *_objects;
 }
 @end
@@ -18,6 +26,8 @@
 @implementation TNEFContentViewController
 
 @synthesize detailViewController = _detailViewController;
+@synthesize filePath = _filePath;
+@synthesize fileNames = _fileNames;
 
 - (void)awakeFromNib
 {
@@ -37,6 +47,9 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    self.filePath = ((AppDelegate*)[UIApplication sharedApplication].delegate).tempDirectory;
+    [self refreshFileList];
 }
 
 - (void)viewDidUnload
@@ -73,15 +86,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return self.fileNames.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    FileListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
-    NSDate *object = [_objects objectAtIndex:indexPath.row];
-    cell.textLabel.text = [object description];
+    cell.title.text = [self.fileNames objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -132,6 +144,15 @@
         NSDate *object = [_objects objectAtIndex:indexPath.row];
         [[segue destinationViewController] setDetailItem:object];
     }
+}
+
+#pragma mark --
+#pragma mark File list parsing
+
+- (void)refreshFileList
+{
+    NSFileManager *fm = [NSFileManager defaultManager];
+    self.fileNames = [fm contentsOfDirectoryAtPath:self.filePath error:nil];
 }
 
 @end

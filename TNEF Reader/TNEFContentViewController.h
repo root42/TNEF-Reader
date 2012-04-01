@@ -13,5 +13,6 @@
 @interface TNEFContentViewController : UITableViewController
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
+@property (nonatomic, retain) NSString *filePath;
 
 @end
