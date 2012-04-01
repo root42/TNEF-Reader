@@ -25,27 +25,8 @@
         splitViewController.delegate = (id)navigationController.topViewController;
     }
     
-    NSFileManager *fm = [NSFileManager defaultManager];
     NSURL *url = (NSURL *)[launchOptions valueForKey:UIApplicationLaunchOptionsURLKey];
-    self.tempDirectory = [NSString stringWithFormat:@"%@TNEF/", NSTemporaryDirectory()];
-    [fm createDirectoryAtPath:self.tempDirectory withIntermediateDirectories:YES attributes:nil error:nil];
-    char *out_dir = [self.tempDirectory cStringUsingEncoding:NSUTF8StringEncoding];
-    int flags = NONE;
-    FILE *fp = NULL;
-    
-    if ([url isFileURL])
-    {
-        fp = fdopen([[NSFileHandle fileHandleForReadingFromURL:url error:NULL] fileDescriptor], "rb");
-    } else {
-        url = [[NSBundle mainBundle] URLForResource:@"winmail" withExtension:@"dat"];
-        fp = fdopen([[NSFileHandle fileHandleForReadingFromURL:url error:NULL] fileDescriptor], "rb");
-    }
-    int ret = parse_file (fp, 
-                          out_dir, 
-                          NULL /* body_file */, 
-                          NULL /* body_pref */, 
-                          flags);
-    NSLog(@"TNEF returned: %i", ret);
+    [self initializeWithURL:url];
     
     return YES;
 }
@@ -75,6 +56,53 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)initializeWithURL:(NSURL *)url
+{
+    // Create temp dir if neccessary
+    NSFileManager *fm = [NSFileManager defaultManager];
+    self.tempDirectory = [NSString stringWithFormat:@"%@TNEF/", NSTemporaryDirectory()];
+    [fm createDirectoryAtPath:self.tempDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    // Make a copy of the string, cause parse_file wants a 'char *', not 'const char *'
+    const char *tempDirC = [self.tempDirectory cStringUsingEncoding:NSUTF8StringEncoding]; 
+    size_t tempDirLen = strlen(tempDirC);
+    char *out_dir = malloc(tempDirLen);
+    strlcpy(out_dir, tempDirC, tempDirLen);
+    
+    int flags = NONE;
+    FILE *fp = NULL;
+    
+    if ([url isFileURL])
+    {
+        fp = fdopen([[NSFileHandle fileHandleForReadingFromURL:url error:NULL] fileDescriptor], "rb");
+    } else {
+        url = [[NSBundle mainBundle] URLForResource:@"winmail" withExtension:@"dat"];
+        fp = fdopen([[NSFileHandle fileHandleForReadingFromURL:url error:NULL] fileDescriptor], "rb");
+    }
+    
+    // Clear directory
+    NSDirectoryEnumerator* en = [fm enumeratorAtPath:self.tempDirectory];
+    NSError* err = nil;
+    BOOL res;
+    
+    NSString* file;
+    while (file = [en nextObject]) {
+        res = [fm removeItemAtPath:[self.tempDirectory stringByAppendingPathComponent:file] error:&err];
+        if (!res && err) {
+            NSLog(@"oops: %@", err);
+        }
+    }
+    
+    // Now unpack the TNEF file
+    int ret = parse_file (fp, 
+                          out_dir, 
+                          NULL /* body_file */, 
+                          NULL /* body_pref */, 
+                          flags);
+    NSLog(@"TNEF returned: %i", ret);
+    free(out_dir);
 }
 
 @end
