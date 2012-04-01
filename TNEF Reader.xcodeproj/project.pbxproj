@@ -40,6 +40,7 @@
 		A829B9C21528BF1200EB2F8B /* util.c in Sources */ = {isa = PBXBuildFile; fileRef = A829B9AA1528BF1200EB2F8B /* util.c */; };
 		A829B9C31528BF1200EB2F8B /* write.c in Sources */ = {isa = PBXBuildFile; fileRef = A829B9AC1528BF1200EB2F8B /* write.c */; };
 		A829B9C41528BF1200EB2F8B /* xstrdup.c in Sources */ = {isa = PBXBuildFile; fileRef = A829B9AE1528BF1200EB2F8B /* xstrdup.c */; };
+		A829B9CB1528F1D800EB2F8B /* FileListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A829B9CA1528F1D800EB2F8B /* FileListCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +102,8 @@
 		A829B9AC1528BF1200EB2F8B /* write.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = write.c; sourceTree = "<group>"; };
 		A829B9AD1528BF1200EB2F8B /* write.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = write.h; sourceTree = "<group>"; };
 		A829B9AE1528BF1200EB2F8B /* xstrdup.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xstrdup.c; sourceTree = "<group>"; };
+		A829B9C91528F1D800EB2F8B /* FileListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileListCell.h; sourceTree = "<group>"; };
+		A829B9CA1528F1D800EB2F8B /* FileListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileListCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +154,8 @@
 				A829B79B1528B74900EB2F8B /* AppDelegate.h */,
 				A829B79C1528B74900EB2F8B /* AppDelegate.m */,
 				A829B79E1528B74900EB2F8B /* MainStoryboard_iPhone.storyboard */,
+				A829B9C91528F1D800EB2F8B /* FileListCell.h */,
+				A829B9CA1528F1D800EB2F8B /* FileListCell.m */,
 				A829B7A11528B74900EB2F8B /* MainStoryboard_iPad.storyboard */,
 				A829B7A41528B74900EB2F8B /* TNEFContentViewController.h */,
 				A829B7A51528B74900EB2F8B /* TNEFContentViewController.m */,
@@ -327,6 +332,7 @@
 				A829B9C21528BF1200EB2F8B /* util.c in Sources */,
 				A829B9C31528BF1200EB2F8B /* write.c in Sources */,
 				A829B9C41528BF1200EB2F8B /* xstrdup.c in Sources */,
+				A829B9CB1528F1D800EB2F8B /* FileListCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
