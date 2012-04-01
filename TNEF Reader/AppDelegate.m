@@ -8,9 +8,13 @@
 
 #import "AppDelegate.h"
 
+#include "options.h"
+#include "tnef.h"
+
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize tempDirectory = _tempDirectory;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -20,6 +24,29 @@
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
         splitViewController.delegate = (id)navigationController.topViewController;
     }
+    
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSURL *url = (NSURL *)[launchOptions valueForKey:UIApplicationLaunchOptionsURLKey];
+    self.tempDirectory = [NSString stringWithFormat:@"%@TNEF/", NSTemporaryDirectory()];
+    [fm createDirectoryAtPath:self.tempDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+    char *out_dir = [self.tempDirectory cStringUsingEncoding:NSUTF8StringEncoding];
+    int flags = NONE;
+    FILE *fp = NULL;
+    
+    if ([url isFileURL])
+    {
+        fp = fdopen([[NSFileHandle fileHandleForReadingFromURL:url error:NULL] fileDescriptor], "rb");
+    } else {
+        url = [[NSBundle mainBundle] URLForResource:@"winmail" withExtension:@"dat"];
+        fp = fdopen([[NSFileHandle fileHandleForReadingFromURL:url error:NULL] fileDescriptor], "rb");
+    }
+    int ret = parse_file (fp, 
+                          out_dir, 
+                          NULL /* body_file */, 
+                          NULL /* body_pref */, 
+                          flags);
+    NSLog(@"TNEF returned: %i", ret);
+    
     return YES;
 }
 							
