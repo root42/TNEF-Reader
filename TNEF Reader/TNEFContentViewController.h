@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuickLook/QLPreviewController.h>
 
 @class DetailViewController;
 
-@interface TNEFContentViewController : UITableViewController
+@interface TNEFContentViewController : UITableViewController <QLPreviewControllerDataSource>
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 @property (nonatomic, retain) NSString *filePath;

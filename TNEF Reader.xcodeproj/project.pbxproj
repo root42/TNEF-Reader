@@ -41,6 +41,7 @@
 		A829B9C31528BF1200EB2F8B /* write.c in Sources */ = {isa = PBXBuildFile; fileRef = A829B9AC1528BF1200EB2F8B /* write.c */; };
 		A829B9C41528BF1200EB2F8B /* xstrdup.c in Sources */ = {isa = PBXBuildFile; fileRef = A829B9AE1528BF1200EB2F8B /* xstrdup.c */; };
 		A829B9CB1528F1D800EB2F8B /* FileListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A829B9CA1528F1D800EB2F8B /* FileListCell.m */; };
+		A867EE591530A83B00054168 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A867EE581530A83B00054168 /* QuickLook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,7 @@
 		A829B9AE1528BF1200EB2F8B /* xstrdup.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xstrdup.c; sourceTree = "<group>"; };
 		A829B9C91528F1D800EB2F8B /* FileListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileListCell.h; sourceTree = "<group>"; };
 		A829B9CA1528F1D800EB2F8B /* FileListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileListCell.m; sourceTree = "<group>"; };
+		A867EE581530A83B00054168 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A867EE591530A83B00054168 /* QuickLook.framework in Frameworks */,
 				A829B78D1528B74900EB2F8B /* UIKit.framework in Frameworks */,
 				A829B78F1528B74900EB2F8B /* Foundation.framework in Frameworks */,
 				A829B7911528B74900EB2F8B /* CoreGraphics.framework in Frameworks */,
@@ -123,6 +126,7 @@
 		A829B77D1528B74800EB2F8B = {
 			isa = PBXGroup;
 			children = (
+				A867EE581530A83B00054168 /* QuickLook.framework */,
 				A829B7921528B74900EB2F8B /* TNEF Reader */,
 				A829B78B1528B74900EB2F8B /* Frameworks */,
 				A829B7891528B74900EB2F8B /* Products */,

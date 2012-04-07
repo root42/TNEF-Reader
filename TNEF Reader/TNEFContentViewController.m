@@ -155,4 +155,20 @@
     self.fileNames = [fm contentsOfDirectoryAtPath:self.filePath error:nil];
 }
 
+#pragma mark --
+#pragma mark QuickLook delegate
+
+- (NSInteger) numberOfPreviewItemsInPreviewController: (QLPreviewController *) controller 
+{
+    return [self.fileNames count];
+}
+
+- (id <QLPreviewItem>)previewController: (QLPreviewController *)controller previewItemAtIndex:(NSInteger)index 
+{
+    NSString *fileName = [self.fileNames objectAtIndex:index];
+    NSString *path = [NSString stringWithFormat:@"%@/%@", self.filePath, fileName];
+    
+    return [NSURL fileURLWithPath:path];
+}
+
 @end
