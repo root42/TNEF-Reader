@@ -1,5 +1,5 @@
 //
-//  MasterViewController.h
+//  TNEFContentViewController.h
 //  TNEF Reader
 //
 //  Created by Arne Schmitz on 01.04.12.
@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <QuickLook/QLPreviewController.h>
 
-@class DetailViewController;
-
 @interface TNEFContentViewController : UITableViewController <QLPreviewControllerDataSource>
 
-@property (strong, nonatomic) DetailViewController *detailViewController;
 @property (nonatomic, retain) NSString *filePath;
+
+- (void)refreshFileList;
 
 @end

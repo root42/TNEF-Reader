@@ -6,7 +6,27 @@
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>${PRODUCT_NAME}</string>
-	<key>CFBundleExecutable</key>
+        <key>CFBundleDocumentTypes</key>
+        <array>
+          <dict>
+            <key>CFBundleTypeName</key>
+            <string>Windows TNEF encoded attachment</string>
+            <key>CFBundleTypeIconFiles</key>
+            <array>
+              <string>document-320.png</string>
+              <string>document-64.png</string>
+            </array>
+            <key>LSHandlerRank</key>
+            <string>Alternate</string>
+            <key>CFBundleTypeRole</key>
+            <string>Viewer</string>
+            <key>LSItemContentTypes</key>
+            <array>
+              <string>de.root42.tnef</string>
+            </array>
+          </dict>
+        </array>
+        <key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
 	<string>de.root42.${PRODUCT_NAME:rfc1034identifier}</string>
@@ -45,5 +65,25 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+        <key>UTExportedTypeDeclarations</key>
+        <array>
+          <dict>
+            <key>UTTypeConformsTo</key>
+            <array>
+              <string>public.data</string>
+            </array>
+            <key>UTTypeDescription</key>
+            <string>Windows TNEF encoded attachment</string>
+            <key>UTTypeIdentifier</key>
+            <string>de.root42.tnef</string>
+            <key>UTTypeTagSpecification</key>
+            <dict>
+              <key>public.filename-extension</key>
+              <array>
+                <string>dat</string>
+              </array>
+            </dict>
+          </dict>
+        </array>
 </dict>
 </plist>

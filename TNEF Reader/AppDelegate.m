@@ -15,6 +15,7 @@
 
 @synthesize window = _window;
 @synthesize tempDirectory = _tempDirectory;
+@synthesize tnefContentViewController = _tnefContentViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -28,6 +29,14 @@
     NSURL *url = (NSURL *)[launchOptions valueForKey:UIApplicationLaunchOptionsURLKey];
     [self initializeWithURL:url];
     
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    [self initializeWithURL:url];
+    // Notify the Content View Controller that new files have arrived
+    [self.tnefContentViewController refreshFileList];
     return YES;
 }
 							
@@ -98,7 +107,7 @@
     // Now unpack the TNEF file
     int ret = parse_file (fp, 
                           out_dir, 
-                          NULL /* body_file */, 
+                          NULL /* body_msg */,
                           NULL /* body_pref */, 
                           flags);
     NSLog(@"TNEF returned: %i", ret);

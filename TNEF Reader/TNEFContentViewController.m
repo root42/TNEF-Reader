@@ -1,5 +1,5 @@
 //
-//  MasterViewController.m
+//  TNEFContentViewController.m
 //  TNEF Reader
 //
 //  Created by Arne Schmitz on 01.04.12.
@@ -9,7 +9,6 @@
 #import "TNEFContentViewController.h"
 
 #import "AppDelegate.h"
-#import "DetailViewController.h"
 #import "FileListCell.h"
 
 
@@ -25,7 +24,6 @@
 
 @implementation TNEFContentViewController
 
-@synthesize detailViewController = _detailViewController;
 @synthesize filePath = _filePath;
 @synthesize fileNames = _fileNames;
 
@@ -40,15 +38,8 @@
 
 - (void)viewDidLoad
 {
+    ((AppDelegate*)[UIApplication sharedApplication].delegate).tnefContentViewController = self;
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
-    self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-    
-    self.filePath = ((AppDelegate*)[UIApplication sharedApplication].delegate).tempDirectory;
     [self refreshFileList];
 }
 
@@ -56,6 +47,9 @@
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+
+    // more clean up
+    ((AppDelegate*)[UIApplication sharedApplication].delegate).tnefContentViewController = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -131,18 +125,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSDate *object = [_objects objectAtIndex:indexPath.row];
-        self.detailViewController.detailItem = object;
-    }
+    // When user taps a row, create the preview controller
+    QLPreviewController *previewer = [[QLPreviewController alloc] init];
+    
+    // Set data source
+    [previewer setDataSource:self];
+    
+    // Which item to preview
+    [previewer setCurrentPreviewItemIndex:indexPath.row];
+    
+    // Push new viewcontroller, previewing the document
+    [[self navigationController] pushViewController:previewer animated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = [_objects objectAtIndex:indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        [[segue destinationViewController] setCurrentPreviewItemIndex:indexPath.row];
     }
 }
 
@@ -151,8 +151,10 @@
 
 - (void)refreshFileList
 {
+    self.filePath = ((AppDelegate*)[UIApplication sharedApplication].delegate).tempDirectory;
     NSFileManager *fm = [NSFileManager defaultManager];
     self.fileNames = [fm contentsOfDirectoryAtPath:self.filePath error:nil];
+    [self.tableView reloadData];
 }
 
 #pragma mark --
