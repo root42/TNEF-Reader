@@ -14,6 +14,7 @@
 
 @interface TNEFContentViewController () 
 @property (nonatomic, retain) NSArray *fileNames;
+@property (nonatomic, retain) NSArray *fileSizes;
 @end
 
 @interface TNEFContentViewController () 
@@ -26,6 +27,7 @@
 
 @synthesize filePath = _filePath;
 @synthesize fileNames = _fileNames;
+@synthesize fileSizes = _fileSizes;
 
 - (void)awakeFromNib
 {
@@ -88,6 +90,8 @@
     FileListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
     cell.title.text = [self.fileNames objectAtIndex:indexPath.row];
+    NSNumber *size = [self.fileSizes objectAtIndex:indexPath.row];
+    cell.subtitle.text = [self stringFromFileSize:[size unsignedLongValue]];
     return cell;
 }
 
@@ -154,6 +158,21 @@
     self.filePath = ((AppDelegate*)[UIApplication sharedApplication].delegate).tempDirectory;
     NSFileManager *fm = [NSFileManager defaultManager];
     self.fileNames = [fm contentsOfDirectoryAtPath:self.filePath error:nil];
+    NSMutableArray *fs = [[NSMutableArray alloc] init];
+    
+    NSDirectoryEnumerator* en = [fm enumeratorAtPath:self.filePath];
+    NSError* err = nil;
+    NSString* file;
+    while (file = [en nextObject]) {
+        NSDictionary *att = [fm attributesOfItemAtPath:[NSString stringWithFormat:@"%@/%@", self.filePath, file] error:&err];
+        if (!att && err) {
+            NSLog(@"Couldn't get attributes of %@.", file);
+        } else {
+            [fs addObject:[att objectForKey:NSFileSize]];
+        }
+    }
+    self.fileSizes = [NSArray arrayWithArray:fs];
+    
     [self.tableView reloadData];
 }
 
@@ -171,6 +190,28 @@
     NSString *path = [NSString stringWithFormat:@"%@/%@", self.filePath, fileName];
     
     return [NSURL fileURLWithPath:path];
+}
+
+
+#pragma mark --
+#pragma mark Utility functions
+
+- (NSString *)stringFromFileSize:(unsigned long)theSize
+{
+	float floatSize = theSize;
+	if (theSize<1023)
+		return([NSString stringWithFormat:@"%i bytes",theSize]);
+	floatSize = floatSize / 1024;
+	if (floatSize<1023)
+		return([NSString stringWithFormat:@"%1.1f KB",floatSize]);
+	floatSize = floatSize / 1024;
+	if (floatSize<1023)
+		return([NSString stringWithFormat:@"%1.1f MB",floatSize]);
+	floatSize = floatSize / 1024;
+    
+	// Add as many as you like
+    
+	return([NSString stringWithFormat:@"%1.1f GB",floatSize]);
 }
 
 @end
