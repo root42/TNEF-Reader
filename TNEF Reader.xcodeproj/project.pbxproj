@@ -16,7 +16,6 @@
 		A829B7A01528B74900EB2F8B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A829B79E1528B74900EB2F8B /* MainStoryboard_iPhone.storyboard */; };
 		A829B7A31528B74900EB2F8B /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A829B7A11528B74900EB2F8B /* MainStoryboard_iPad.storyboard */; };
 		A829B7A61528B74900EB2F8B /* TNEFContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A829B7A51528B74900EB2F8B /* TNEFContentViewController.m */; };
-		A829B7A91528B74900EB2F8B /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A829B7A81528B74900EB2F8B /* DetailViewController.m */; };
 		A829B7B01528B93300EB2F8B /* winmail.dat in Resources */ = {isa = PBXBuildFile; fileRef = A829B7AF1528B92200EB2F8B /* winmail.dat */; };
 		A829B9AF1528BF1200EB2F8B /* alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = A829B9851528BF1200EB2F8B /* alloc.c */; };
 		A829B9B01528BF1200EB2F8B /* attr.c in Sources */ = {isa = PBXBuildFile; fileRef = A829B9871528BF1200EB2F8B /* attr.c */; };
@@ -59,8 +58,6 @@
 		A829B7A21528B74900EB2F8B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		A829B7A41528B74900EB2F8B /* TNEFContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNEFContentViewController.h; sourceTree = "<group>"; };
 		A829B7A51528B74900EB2F8B /* TNEFContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNEFContentViewController.m; sourceTree = "<group>"; };
-		A829B7A71528B74900EB2F8B /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		A829B7A81528B74900EB2F8B /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		A829B7AF1528B92200EB2F8B /* winmail.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = winmail.dat; sourceTree = "<group>"; };
 		A829B9851528BF1200EB2F8B /* alloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = alloc.c; sourceTree = "<group>"; };
 		A829B9861528BF1200EB2F8B /* alloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alloc.h; sourceTree = "<group>"; };
@@ -163,8 +160,6 @@
 				A829B7A11528B74900EB2F8B /* MainStoryboard_iPad.storyboard */,
 				A829B7A41528B74900EB2F8B /* TNEFContentViewController.h */,
 				A829B7A51528B74900EB2F8B /* TNEFContentViewController.m */,
-				A829B7A71528B74900EB2F8B /* DetailViewController.h */,
-				A829B7A81528B74900EB2F8B /* DetailViewController.m */,
 				A829B7931528B74900EB2F8B /* Supporting Files */,
 			);
 			path = "TNEF Reader";
@@ -313,7 +308,6 @@
 				A829B7991528B74900EB2F8B /* main.m in Sources */,
 				A829B79D1528B74900EB2F8B /* AppDelegate.m in Sources */,
 				A829B7A61528B74900EB2F8B /* TNEFContentViewController.m in Sources */,
-				A829B7A91528B74900EB2F8B /* DetailViewController.m in Sources */,
 				A829B9AF1528BF1200EB2F8B /* alloc.c in Sources */,
 				A829B9B01528BF1200EB2F8B /* attr.c in Sources */,
 				A829B9B11528BF1200EB2F8B /* date.c in Sources */,
