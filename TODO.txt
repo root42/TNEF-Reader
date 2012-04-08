@@ -6,3 +6,5 @@
 -- printing
 - opening single files in external applications
 - about dialog / with license
+- app icon
+- document icons
