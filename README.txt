@@ -12,3 +12,7 @@ TNEF Reader utilizes the tnef program by Mark Simpson et al:
 http://tnef.sourceforge.net/
 
 This program is licensed under the GNU GPL, see the file COPYING for details.
+
+This app includes some icons from Joseph Wain. See
+http://glyphish.com/ for more details. To get the 2x sizes of the
+icons, you must buy the Glyphish Pro icon pack.
