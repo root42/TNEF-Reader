@@ -150,8 +150,7 @@
     }
 }
 
-#pragma mark --
-#pragma mark File list parsing
+#pragma mark - File list parsing
 
 - (void)refreshFileList
 {
@@ -177,8 +176,7 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-#pragma mark --
-#pragma mark QuickLook delegate
+#pragma mark - QuickLook delegate
 
 - (NSInteger) numberOfPreviewItemsInPreviewController: (QLPreviewController *) controller 
 {
@@ -194,8 +192,7 @@
 }
 
 
-#pragma mark --
-#pragma mark Utility functions
+#pragma mark - Utility functions
 
 - (NSString *)stringFromFileSize:(unsigned long)theSize
 {
