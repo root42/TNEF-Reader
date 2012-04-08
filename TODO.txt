@@ -1,0 +1,8 @@
+- selecting multiple files in a winmail.dat for
+-- saving
+--- in photo album
+--- in iCloud
+-- forwarding
+-- printing
+- opening single files in external applications
+- about dialog / with license
