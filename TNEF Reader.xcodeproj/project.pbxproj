@@ -41,6 +41,10 @@
 		A829B9C41528BF1200EB2F8B /* xstrdup.c in Sources */ = {isa = PBXBuildFile; fileRef = A829B9AE1528BF1200EB2F8B /* xstrdup.c */; };
 		A829B9CB1528F1D800EB2F8B /* FileListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A829B9CA1528F1D800EB2F8B /* FileListCell.m */; };
 		A867EE591530A83B00054168 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A867EE581530A83B00054168 /* QuickLook.framework */; };
+		A867EE6315319C7600054168 /* 59-info.png in Resources */ = {isa = PBXBuildFile; fileRef = A867EE6115319C7600054168 /* 59-info.png */; };
+		A867EE6415319C7600054168 /* 59-info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A867EE6215319C7600054168 /* 59-info@2x.png */; };
+		A867EE6B15319ECA00054168 /* AboutDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A867EE6A15319ECA00054168 /* AboutDialogViewController.m */; };
+		A867EE6E1531A32100054168 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = A867EE6D1531A32100054168 /* about.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +107,11 @@
 		A829B9C91528F1D800EB2F8B /* FileListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileListCell.h; sourceTree = "<group>"; };
 		A829B9CA1528F1D800EB2F8B /* FileListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileListCell.m; sourceTree = "<group>"; };
 		A867EE581530A83B00054168 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		A867EE6115319C7600054168 /* 59-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "59-info.png"; sourceTree = "<group>"; };
+		A867EE6215319C7600054168 /* 59-info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "59-info@2x.png"; sourceTree = "<group>"; };
+		A867EE6915319ECA00054168 /* AboutDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutDialogViewController.h; sourceTree = "<group>"; };
+		A867EE6A15319ECA00054168 /* AboutDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutDialogViewController.m; sourceTree = "<group>"; };
+		A867EE6D1531A32100054168 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				A829B9831528BF1200EB2F8B /* tnef */,
+				A867EE6915319ECA00054168 /* AboutDialogViewController.h */,
+				A867EE6A15319ECA00054168 /* AboutDialogViewController.m */,
 				A829B79B1528B74900EB2F8B /* AppDelegate.h */,
 				A829B79C1528B74900EB2F8B /* AppDelegate.m */,
 				A829B79E1528B74900EB2F8B /* MainStoryboard_iPhone.storyboard */,
@@ -168,6 +179,8 @@
 		A829B7931528B74900EB2F8B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A867EE5F15319C6100054168 /* icons */,
+				A867EE6D1531A32100054168 /* about.html */,
 				A829B7AF1528B92200EB2F8B /* winmail.dat */,
 				A829B7941528B74900EB2F8B /* TNEF Reader-Info.plist */,
 				A829B7951528B74900EB2F8B /* InfoPlist.strings */,
@@ -241,6 +254,15 @@
 			path = replace;
 			sourceTree = "<group>";
 		};
+		A867EE5F15319C6100054168 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				A867EE6115319C7600054168 /* 59-info.png */,
+				A867EE6215319C7600054168 /* 59-info@2x.png */,
+			);
+			name = icons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -295,6 +317,9 @@
 				A829B7971528B74900EB2F8B /* InfoPlist.strings in Resources */,
 				A829B7A01528B74900EB2F8B /* MainStoryboard_iPhone.storyboard in Resources */,
 				A829B7A31528B74900EB2F8B /* MainStoryboard_iPad.storyboard in Resources */,
+				A867EE6315319C7600054168 /* 59-info.png in Resources */,
+				A867EE6415319C7600054168 /* 59-info@2x.png in Resources */,
+				A867EE6E1531A32100054168 /* about.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +356,7 @@
 				A829B9C31528BF1200EB2F8B /* write.c in Sources */,
 				A829B9C41528BF1200EB2F8B /* xstrdup.c in Sources */,
 				A829B9CB1528F1D800EB2F8B /* FileListCell.m in Sources */,
+				A867EE6B15319ECA00054168 /* AboutDialogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
