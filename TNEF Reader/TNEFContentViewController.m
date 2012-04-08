@@ -181,10 +181,13 @@
 
 - (IBAction)chooseFileAction:(id)sender;
 {
-    UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Perform on selected files:"
-                                                    delegate:self cancelButtonTitle:@"Cancel" 
+    UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Perform on selected files:", nil)
+                                                    delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
                                       destructiveButtonTitle:nil
-                                           otherButtonTitles:@"Email", @"Save to album", @"Save to iCloud", nil];
+                                           otherButtonTitles:NSLocalizedString(@"Email", nil),
+                                                             NSLocalizedString(@"Save to album", nil),
+                                                             NSLocalizedString(@"Save to iCloud", nil),
+                                                             nil];
     [as showFromBarButtonItem:self.fileActionButton animated:YES];
 }
 
