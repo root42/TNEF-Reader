@@ -112,6 +112,7 @@
 		A867EE6915319ECA00054168 /* AboutDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutDialogViewController.h; sourceTree = "<group>"; };
 		A867EE6A15319ECA00054168 /* AboutDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutDialogViewController.m; sourceTree = "<group>"; };
 		A867EE6D1531A32100054168 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		A867EE891532409900054168 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = de; path = de.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +298,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
 			);
 			mainGroup = A829B77D1528B74800EB2F8B;
 			productRefGroup = A829B7891528B74900EB2F8B /* Products */;
@@ -375,6 +377,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A829B79F1528B74900EB2F8B /* en */,
+				A867EE891532409900054168 /* de */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
