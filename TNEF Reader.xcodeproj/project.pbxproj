@@ -180,9 +180,8 @@
 		A829B7931528B74900EB2F8B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A867EE8A1532416E00054168 /* Resources */,
 				A867EE5F15319C6100054168 /* icons */,
-				A867EE6D1531A32100054168 /* about.html */,
-				A829B7AF1528B92200EB2F8B /* winmail.dat */,
 				A829B7941528B74900EB2F8B /* TNEF Reader-Info.plist */,
 				A829B7951528B74900EB2F8B /* InfoPlist.strings */,
 				A829B7981528B74900EB2F8B /* main.m */,
@@ -262,6 +261,15 @@
 				A867EE6215319C7600054168 /* 59-info@2x.png */,
 			);
 			name = icons;
+			sourceTree = "<group>";
+		};
+		A867EE8A1532416E00054168 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A867EE6D1531A32100054168 /* about.html */,
+				A829B7AF1528B92200EB2F8B /* winmail.dat */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
