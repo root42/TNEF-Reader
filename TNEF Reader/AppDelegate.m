@@ -77,10 +77,16 @@
     // Make a copy of the string, cause parse_file wants a 'char *', not 'const char *'
     const char *tempDirC = [self.tempDirectory cStringUsingEncoding:NSUTF8StringEncoding]; 
     size_t tempDirLen = strlen(tempDirC);
-    char *out_dir = malloc(tempDirLen);
-    strlcpy(out_dir, tempDirC, tempDirLen);
+    char *out_dir = malloc(tempDirLen + 1);
+    strlcpy(out_dir, tempDirC, tempDirLen + 1);
     
-    int flags = NONE;
+    // Make a copy of the body file name
+    const char *bodyC = [[NSString stringWithFormat:@"body", self.tempDirectory] cStringUsingEncoding:NSUTF8StringEncoding];
+    size_t bodyLen = strlen(bodyC);
+    char *body = malloc(bodyLen + 1);
+    strlcpy(body, bodyC, bodyLen + 1);
+    
+    int flags = SAVEBODY;
     FILE *fp = NULL;
     
     if ([url isFileURL])
@@ -107,11 +113,12 @@
     // Now unpack the TNEF file
     int ret = parse_file (fp, 
                           out_dir, 
-                          NULL /* body_msg */,
-                          NULL /* body_pref */, 
+                          body,
+                          "all", 
                           flags);
     NSLog(@"TNEF returned: %i", ret);
     free(out_dir);
+    free(body);
 }
 
 @end
