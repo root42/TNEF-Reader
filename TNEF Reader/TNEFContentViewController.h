@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <QuickLook/QLPreviewController.h>
 
-@interface TNEFContentViewController : UITableViewController <QLPreviewControllerDataSource>
+@interface TNEFContentViewController : UITableViewController <QLPreviewControllerDataSource, UIActionSheetDelegate>
 
 @property (nonatomic, retain) NSString *filePath;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *fileActionButton;
+
+- (IBAction)chooseFileAction:(id)sender;
 
 - (void)refreshFileList;
 

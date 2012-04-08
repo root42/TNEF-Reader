@@ -28,6 +28,7 @@
 @synthesize filePath = _filePath;
 @synthesize fileNames = _fileNames;
 @synthesize fileSizes = _fileSizes;
+@synthesize fileActionButton = _fileActionButton;
 
 - (void)awakeFromNib
 {
@@ -174,6 +175,42 @@
     
     [self.tableView reloadData];
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+#pragma mark - Actions on files
+
+- (IBAction)chooseFileAction:(id)sender;
+{
+    UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Perform on selected files:"
+                                                    delegate:self cancelButtonTitle:@"Cancel" 
+                                      destructiveButtonTitle:nil
+                                           otherButtonTitles:@"Email", @"Save to album", @"Save to iCloud", nil];
+    [as showFromBarButtonItem:self.fileActionButton animated:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+            // Email
+            NSLog(@"Email");
+            break;
+
+        case 1:
+            // Album
+            NSLog(@"Album");
+            break;
+
+        case 2:
+            // iCloud
+            NSLog(@"iCloud");
+            break;
+
+        default:
+            // nothing
+            NSLog(@"Cancel");
+            break;
+    }
 }
 
 #pragma mark - QuickLook delegate

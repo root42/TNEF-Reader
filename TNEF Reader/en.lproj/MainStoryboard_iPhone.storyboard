@@ -79,8 +79,15 @@
                                 <segue destination="CAb-T2-Rq8" kind="push" id="6Qc-BS-RXJ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="V2P-hY-La2"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="V2P-hY-La2">
+                            <connections>
+                                <action selector="chooseFileAction:" destination="12" id="lz4-tF-rYU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="fileActionButton" destination="V2P-hY-La2" id="8Vy-gH-6bU"/>
+                    </connections>
                 </tableViewController>
                 <customObject id="bHA-rF-2nH" customClass="AppDelegate">
                     <connections>
@@ -146,6 +153,10 @@
         </class>
         <class className="TNEFContentViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TNEFContentViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="chooseFileAction:"/>
+                <relationship kind="outlet" name="fileActionButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
