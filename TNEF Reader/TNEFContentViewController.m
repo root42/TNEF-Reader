@@ -174,6 +174,7 @@
     self.fileSizes = [NSArray arrayWithArray:fs];
     
     [self.tableView reloadData];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 #pragma mark --
