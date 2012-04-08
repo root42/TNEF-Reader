@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  TNEF Reader
+
+  Created by Arne Schmitz on 09.04.12.
+  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+*/
+
+"chooseFileAction title" = "Auf ausgewählten Dateien ausführen:";
+"chooseFileAction email" = "Per Email senden";
+"chooseFileAction album" = "In Album speichern";
+"chooseFileAction icloud" = "In der iCloud speichern";
